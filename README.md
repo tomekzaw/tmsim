@@ -1,5 +1,5 @@
 # Python Turing Machine Simulator
-[![asciicast](https://asciinema.org/a/aJyVgDLVoFLa9xiIvUPMUBDrH.svg)](https://asciinema.org/a/aJyVgDLVoFLa9xiIvUPMUBDrH)
+[![asciicast](https://asciinema.org/a/Eyi6GLepf56PSUZCJVBDoCjIM.svg)](https://asciinema.org/a/Eyi6GLepf56PSUZCJVBDoCjIM)
 
 ## Quick Start Guide
 The following snippet demonstrates how to program Turing machines and check multiple test cases.
@@ -97,14 +97,12 @@ When step limit is reached, an error will be raised if `raise_on_exceed` is set 
 By default,
 ```python
 step_limit=1_000_000,
-raise_on_exceed=True,
+raise_on_exceed=True
 ```
 
-If you need only final result, you may turn off logging by setting `print_configurations` and/or `print_result` keyword arguments.
-By default,
+If you need only final result, you may turn off logging by setting `print_configurations` keyword argument. By default,
 ```python
-print_configurations=True,
-print_result=True,
+print_configurations=True
 ```
 
 ## Testing

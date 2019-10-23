@@ -128,7 +128,6 @@ class Algorithm:
         step_limit=1_000_000,
         raise_on_exceed=True,
         print_configurations=True,
-        print_result=True
     ):
         tm = TuringMachine(initial_sequence, blank_symbol=self.blank_symbol, initial_state=self.initial_state)
         if print_configurations:
@@ -139,10 +138,7 @@ class Algorithm:
                 print(self.format_configuration(tm.configuration))
 
             if tm.state in result_states:
-                result = result_states[tm.state], tm.tape_contents
-                if print_result:
-                    print(result)
-                return result
+                return result_states[tm.state], tm.tape_contents
 
             if step_limit is not None and step > step_limit:
                 if raise_on_exceed:

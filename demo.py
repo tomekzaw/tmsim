@@ -1,4 +1,5 @@
 from tmsim import *
+import sys
 
 Algorithm({
     'q_s': {
@@ -18,4 +19,4 @@ Algorithm({
         '(': 'q_s',
         '[]': ('q_s', '->'),
     },
-}).run('((())()(')
+}).run(sys.argv[1] if len(sys.argv) > 1 else '((())()(')
