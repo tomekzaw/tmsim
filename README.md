@@ -54,7 +54,7 @@ arrows={
 }
 ```
 
-## Run
+## Running
 You may execute your algorithm for single input by calling `run` method on `Algorithm` object. The following code will instantiate a new Turing machine with given input as initial sequence and print all configurations one by one until machine terminates or step limit is exceeded.
 ```python
 from tmsim import *
@@ -75,13 +75,16 @@ By default, you may use `q_y` or `True` as accepting state and `q_n` or `False` 
 result_states={True: True, False: False, 'q_y': True, 'q_n': False}
 ```
 
-Not all algorithms will work on first try, some of them may fall into an infinite loop. You may limit steps number by adjusting `step_limit`. You may also pass `None` to disable this feature. When step limit is reached, an error will be raised if `raise_on_exceed` is set to `True`, otherwise `None` will be returned. By default,
+Not all algorithms will work on first try – some of them may fall into an infinite loop.
+You may limit maximum step number by adjusting `step_limit`. You may also pass `None` to disable this feature.
+When step limit is reached, an error will be raised if `raise_on_exceed` is set to `True`, otherwise `None` will be returned.
+By default,
 ```python
 step_limit=1_000_000,
 raise_on_exceed=True,
 ```
 
-If you need only final result, you may turn off logging by setting `print_configurations` and `print_result` keyword arguments.
+If you need only final result, you may turn off logging by setting `print_configurations` and/or `print_result` keyword arguments.
 By default,
 ```python
 print_configurations=True,
@@ -89,7 +92,7 @@ print_result=True,
 ```
 
 ## Testing
-You may run the test suite by calling `test` method on `Algorithm` object. This method requires two arguments: an iterable of initial sequences (tuple, list, generator etc.) and a function that returns expected output (`True`, `False` or another value from `results_states` dictionary). Note that you may pass either lambda, function or method defined with `def` keyword.
+You may run the test suite by calling `test` method on `Algorithm` object. This method requires two arguments: an iterable of initial sequences (tuple, list, generator etc.) and a function that returns expected output (`True`, `False`, or another value from `results_states` dictionary). Note that you may pass either lambda or name of function/method defined with `def` keyword.
 ```python
 Algorithm({
     # write your algorithm here
