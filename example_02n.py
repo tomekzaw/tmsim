@@ -1,10 +1,10 @@
 # { 0^(2^n) | n >= 0 }
 # Tomek Zawadzki
 
-from TuringMachine import *
+from tmsim import *
 import math
 
-TuringMachine({
+Algorithm({
     'q_s': {
         '[]': False,
         '0': ('@', 'q_check_single', '->'),
@@ -33,10 +33,7 @@ TuringMachine({
         '#': '<-',
         '@': ('q_odd', '->'),
     },
-}).run_tests(test_cases={
-    '': False,
-    **{
-        '0' * n: math.log(n, 2).is_integer()
-        for n in range(1, 80)
-    },
-})
+}).test(
+    ('0' * n for n in range(0, 80)),
+    lambda word: (math.log(len(word), 2).is_integer() if len(word) else 0) and all(char == '0' for char in word)
+)

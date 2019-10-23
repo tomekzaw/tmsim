@@ -1,15 +1,15 @@
 # { xx | x ∈ {0,1}* }
 # Tomek Zawadzki
 
-from TuringMachine import *
+from tmsim import *
 import itertools
 
-TuringMachine({
+Algorithm({
     'q_s': {
         # replace leftmost 0 or 1 with A or B, respectively
         '0': ('A', 'q_r', '->'), 
         '1': ('B', 'q_r', '->'),
-        # start marking Cs and Ds with *
+        # if all 0s and 1s have already been replaced and leftmost C or D is found, then start marking Cs and Ds as *
         'C': 'q_*', 
         'D': 'q_*',
         # accept empty word as it meets the condition
@@ -18,10 +18,10 @@ TuringMachine({
     'q_r': {
         # find rightmost 0 or 1 by finding end of the word
         '0': '->',
-        '1': '->',
-        'C': '->',
-        'D': '->',
-        # if end of the word is found, go backwards
+        '1': '->',        
+        # if C, D or end of the word is found, then go backwards
+        'C': ('q_l', '<-'),
+        'D': ('q_l', '<-'),
         '[]': ('q_l', '<-'),
     },
     'q_l': {
@@ -84,7 +84,7 @@ TuringMachine({
         # accept if all corresponding symbols have been marked
         '[]': True,
     }
-}).run_tests(
-    inputs=(word for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
-    expected_func=lambda word: word[:len(word)//2] == word[len(word)//2:]
+}).test(
+    (word for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
+    lambda word: len(word) % 2 == 0 and word[:len(word)//2] == word[len(word)//2:]
 )
