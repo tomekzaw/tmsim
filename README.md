@@ -64,8 +64,7 @@ Algorithm({
         '1': ('0', '->'),
         '[]': True,
     }
-})
-algo.run('001011001')
+}).run('001011001')
 ```
 
 You may also customize your simulation parameters by passing additional keyword arguments. 
