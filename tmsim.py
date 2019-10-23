@@ -144,7 +144,7 @@ class Algorithm:
                     print(result)
                 return result
 
-            if step > step_limit:
+            if step_limit is not None and step > step_limit:
                 if raise_on_exceed:
                     raise RuntimeError('Step limit of {step_limit} exceeded')
                 else:

@@ -1,10 +1,10 @@
 # { 0^n 1^n | n >= 0 }
 # Tomek Zawadzki
 
-from TuringMachine import *
+from tmsim import *
 import itertools
 
-TuringMachine({
+Algorithm({
     'q_s': {
         '0': ('#', 'q_1', '->'),
         '[]': True,
@@ -28,11 +28,7 @@ TuringMachine({
         '1': False,
         '[]': True,
     }
-}).run_tests(
-    inputs=(
-        word
-        for length in range(0, 10+1)
-        for word in itertools.product('01', repeat=length)
-    ),
-    expected_func=lambda word: word == ('0',) * (len(word)//2) + ('1',) * (len(word)//2)
+}).test(
+    (word for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
+    lambda word: word == ('0',) * (len(word)//2) + ('1',) * (len(word)//2)
 )
