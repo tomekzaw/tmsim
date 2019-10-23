@@ -1,31 +1,42 @@
 # Python Turing Machine Simulator
+[![asciicast](https://asciinema.org/a/aJyVgDLVoFLa9xiIvUPMUBDrH.svg)](https://asciinema.org/a/aJyVgDLVoFLa9xiIvUPMUBDrH)
 
-## Example
+## Quick Start Guide
 The following snippet demonstrates how to program Turing machines and check multiple test cases.
 ```python
 from tmsim import *
 import itertools
 
 Algorithm({
-    'q_even': {
-        '0': ('q_odd', '->'),
-        '1': ('q_odd', '->'),
+    'q_s': {
         '[]': True,
+        '(': ('*', 'q_r', '->'),
+        ')': False,
+        '*': '->',
     },
-    'q_odd': {
-        '0': ('q_even', '->'),
-        '1': ('q_even', '->'),
+    'q_r': { # find corresponding closing bracket
         '[]': False,
-    }
-}, initial_state='q_even').test(
-    (word for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
-    lambda word: len(word) % 2 == 0
-)
+        '(': '->',
+        '*': '->',
+        ')': ('*', 'q_b', '<-'),
+    },
+    'q_b': { # find opening bracket
+        '*': '<-',
+        '(': 'q_s',
+        '[]': ('q_s', '->'),
+    },
+}).run('((())()(')
 ```
 
 ## Algorithm
-When developing algorithms, you can use `<-` and `->` arrows to move head one step left and one step right, respectively. By default, the tape is infinite in both directions. You may customize behaviour of head by providing a dictionary of lambdas that accept current head position index and return new index.
-For left-bounded tape you may use:
+When developing algorithms, you can use `<-` and `->` arrows to move the tape head one cell to the left or one cell to the right, respectively. However, you may customize behaviour of head by providing a dictionary of lambdas that accept current head position index and return new index. By default,
+```python
+arrows={
+    '<-': lambda x: x-1,
+    '->': lambda x: x+1,
+}
+```
+which means that the tape is infinite in both directions. For left-bounded tape you may use:
 ```python
 arrows={
     '<-': lambda x: x-1 if x > 0 else 0,
@@ -55,7 +66,7 @@ arrows={
 ```
 
 ## Running
-You may execute your algorithm for single input by calling `run` method on `Algorithm` object. The following code will instantiate a new Turing machine with given input as initial sequence and print all configurations one by one until machine terminates or step limit is exceeded.
+You may execute your algorithm for single input by calling `run` method on `Algorithm` object. The following code will not only instantiate a new Turing machine with given input as initial sequence and but also print all configurations one by one until machine terminates or step limit is exceeded.
 ```python
 from tmsim import *
 Algorithm({
@@ -72,7 +83,12 @@ The machine terminates when it reaches any state from the `result_states` dictio
 Then `run` method returns dictionary value for reached state.
 By default, you may use `q_y` or `True` as accepting state and `q_n` or `False` as rejecting state.
 ```python
-result_states={True: True, False: False, 'q_y': True, 'q_n': False}
+result_states={
+    True: True,
+    False: False,
+    'q_y': True,
+    'q_n': False,
+}
 ```
 
 Not all algorithms will work on first try – some of them may fall into an infinite loop.
