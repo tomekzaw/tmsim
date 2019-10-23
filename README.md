@@ -5,7 +5,6 @@
 The following snippet demonstrates how to program Turing machines and check multiple test cases.
 ```python
 from tmsim import *
-import itertools
 
 Algorithm({
     'q_s': {
@@ -29,14 +28,14 @@ Algorithm({
 ```
 
 ## Algorithm
-When developing algorithms, you can use `<-` and `->` arrows to move the tape head one cell to the left or one cell to the right, respectively. However, you may customize behaviour of head by providing a dictionary of lambdas that accept current head position index and return new index. By default,
+When developing algorithms, you can use `<-` and `->` arrows to move the tape head one cell left or right, respectively. However, you may customize behaviour of head by providing a dictionary of lambdas that accept current head position index and return new index. By default the tape is infinite in both directions.
 ```python
 arrows={
     '<-': lambda x: x-1,
     '->': lambda x: x+1,
 }
 ```
-which means that the tape is infinite in both directions. For left-bounded tape you may use:
+For left-bounded tape you may use:
 ```python
 arrows={
     '<-': lambda x: x-1 if x > 0 else 0,
@@ -50,7 +49,7 @@ arrows={
     '->': lambda x: x+1,
 }
 ```
-For finite-length tape of `size` you may use:
+For finite-length tape you may use:
 ```python
 arrows={
     '<-': lambda x: max(x-1, 0),
@@ -66,9 +65,8 @@ arrows={
 ```
 
 ## Running
-You may execute your algorithm for single input by calling `run` method on `Algorithm` object. The following code will not only instantiate a new Turing machine with given input as initial sequence and but also print all configurations one by one until machine terminates or step limit is exceeded.
+You may execute your algorithm for single input by calling `run` method on `Algorithm` object. The following code will instantiate a new Turing machine with given input as initial sequence and also print all configurations one by one until machine terminates or step limit is exceeded.
 ```python
-from tmsim import *
 Algorithm({
     'q_s': {
         '0': ('1', '->'),
@@ -77,10 +75,9 @@ Algorithm({
     }
 }).run('001011001')
 ```
-
-You may also customize your simulation parameters by passing additional keyword arguments. 
+You may also customize this behaviour by passing additional keyword arguments. 
 The machine terminates when it reaches any state from the `result_states` dictionary keys.
-Then `run` method returns dictionary value for reached state.
+If that happens, `run` method returns dictionary value for reached state.
 By default, you may use `q_y` or `True` as accepting state and `q_n` or `False` as rejecting state.
 ```python
 result_states={
@@ -93,14 +90,13 @@ result_states={
 
 Not all algorithms will work on first try – some of them may fall into an infinite loop.
 You may limit maximum step number by adjusting `step_limit`. You may also pass `None` to disable this feature.
-When step limit is reached, an error will be raised if `raise_on_exceed` is set to `True`, otherwise `None` will be returned.
-By default,
+When step limit is reached, an error will be raised if `raise_on_exceed` is set to `True`, otherwise `None` will be returned. By default,
 ```python
 step_limit=1_000_000,
 raise_on_exceed=True
 ```
 
-If you need only final result, you may turn off logging by setting `print_configurations` keyword argument. By default,
+If you need only final result, you may turn off logging by setting `print_configurations` keyword argument to `False`. By default,
 ```python
 print_configurations=True
 ```
