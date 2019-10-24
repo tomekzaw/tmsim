@@ -70,7 +70,7 @@ specifies that if `q_s` is the current state, the machine will either
 * change state to `False` (rejecting state), if the current symbol is `1`, or
 * change state to `q_c` and move one cell to the right, if the current symbol is `*`.
 
-Note that there is no obligation for a transition function value to be a triple of (*state*, *symbol*, *arrow*), since the missing elements will be interpreted as remaining the current state, not changing the current symbol, or not moving the tape head in this step, respectively. You may also replace tuples of single element, for instance `('->',)`, with that element itself, that is `'->'`. This trick is especially useful in case of arrows or final states.
+Note that there is no obligation for a transition function value to be a triple (*state*, *symbol*, *arrow*), since the missing elements will be interpreted as remaining the current state, not changing the current symbol, or not moving the tape head, respectively. You may also replace tuples of single element, for instance `('->',)`, with the element itself, that is `'->'`. This trick is especially useful in case of arrows or final states.
 
 ### States
 By convention, Turing machine states are strings that start with `q_`, for example `q_find`, `q_check` or `q_back`, but it is also acceptable to use abbreviations such as `q_f`, `q_c` or `q_b`, respectively, and supply additional information as comments if necessary.
@@ -128,7 +128,7 @@ arrows={
 empty_word_representation='ε',
 symbols_representations={'[]': '□'},  
 ```
-Note that the sets of symbols, states and arrows must be disjoint.
+Note that the sets of symbols, states and arrows must be pairwise disjoint.
 
 ## Running
 You may execute your algorithm for single input by calling `run` method on `Algorithm` object. The following code will instantiate a new Turing machine with given input as initial sequence and also print all configurations one by one until machine terminates or step limit is exceeded.
@@ -141,7 +141,7 @@ Algorithm({
     }
 }).run('001011001')
 ```
-You may also customize this behaviour by passing additional keyword arguments. The machine terminates when it reaches any state from the `final_states` dictionary keys. If that happens, `run` method returns dictionary value for reached state. By default, you may use `q_y` or `True` as accepting state and `q_n` or `False` as rejecting state.
+You may also customize this behaviour by passing additional keyword arguments. The machine terminates when it reaches any state from the `final_states` dictionary keys. If that happens, `run` method returns dictionary value for reached state. By default, you may use `q_y` or `True` as accepting state in order for `run` method to return `True`, and `q_n` or `False` as rejecting state in order to return `False`.
 ```python
 final_states={
     True: True,
