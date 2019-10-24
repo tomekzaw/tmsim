@@ -5,7 +5,7 @@
 * [{ 0<sup>2<sup>*n*</sup></sup> | *n* &ge; 0 }](example_02n.py)
 * [{ 0<sup>*n*</sup>1<sup>*n*</sup> | *n* &ge; 0 }](example_0n1n.py)
 * [{ *xx* | *x* &isin; {0, 1}* }](example_xx.py)
-* [{ bin(*i*)#bin(*i*+2) | *i* &ge; 0 }](example_brackets.py)
+* [{ bin(*i*)#bin(*i*+2) | *i* &ge; 0 }](example_bin(i)#bin(i+2).py)
 * [{ *x* &isin; { (, ) }* | *x* is balanced }](example_brackets.py)
 
 ## Quick Start Guide
