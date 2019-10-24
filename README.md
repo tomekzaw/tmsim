@@ -55,13 +55,13 @@ The tape alphabet and the set of states are inferred from the transition functio
 You may create an `Algorithm` object by passing a dictionary of dictionaries to the constructor. The keys of the outer dictionary are states, the keys of inner dictionaries are symbols, and the values of inner dictionaries represent the transition function values. For example,
 ```python
 Algorithm({
-    `q_s`: {
+    'q_s': {
         '[]': True,
         '0': ('#', 'q_1', '->'),
         '1': False,
         '*': ('q_c', '->'),
     },
-    ...
+    # etc.
 })
 ```
 specifies that if `q_s` is the current state, the machine will either
@@ -151,7 +151,7 @@ final_states={
 }
 ```
 
-Not all algorithms will work on first try &ndash; some of them may occasionally fall into an infinite loop.
+Some algorithms may occasionally fall into an infinite loop.
 You may limit maximum step number by adjusting `step_limit`. You may also pass `None` to disable this feature.
 When step limit is reached, an error will be raised if `raise_on_exceed` is set to `True`, otherwise `None` will be returned. By default,
 ```python
