@@ -6,10 +6,10 @@ import itertools
 
 Algorithm({
     'q_s': {
-        '0': ('#', 'q_1', '->'),
         '[]': True,
-        '*': ('q_c', '->'),
+        '0': ('#', 'q_1', '->'),
         '1': False,
+        '*': ('q_c', '->'),
     },
     'q_1': {
         '0': '->',
@@ -29,6 +29,6 @@ Algorithm({
         '[]': True,
     }
 }).test(
-    (word for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
-    lambda word: word == ('0',) * (len(word)//2) + ('1',) * (len(word)//2)
+    (''.join(word) for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
+    lambda word: word == '0' * (len(word) // 2) + '1' * (len(word) // 2)
 )

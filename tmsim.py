@@ -59,15 +59,15 @@ class Algorithm:
         funcdict,
         *,
         blank_symbol='[]',
-        initial_state='q_s',
-        empty_word_representation='ε',
-        symbols_representations={'[]': '□'},        
+        initial_state='q_s',     
         states=(True, False),
         symbols=(),
         arrows={
             '<-': lambda x: x-1,
             '->': lambda x: x+1,
         },
+        empty_word_representation='ε',
+        symbols_representations={'[]': '□'},   
     ):
         self.blank_symbol, self.initial_state = blank_symbol, initial_state
         self.empty_word_representation, self.symbols_representations = empty_word_representation, symbols_representations
@@ -124,7 +124,12 @@ class Algorithm:
         self,
         initial_sequence,
         *,
-        result_states={True: True, False: False, 'q_y': True, 'q_n': False},
+        final_states={
+            True: True,
+            False: False,
+            'q_y': True,
+            'q_n': False
+        },
         step_limit=1_000_000,
         raise_on_exceed=True,
         print_configurations=True,
@@ -137,8 +142,8 @@ class Algorithm:
             if print_configurations:
                 print(self.format_configuration(tm.configuration))
 
-            if tm.state in result_states:
-                return result_states[tm.state], tm.tape_contents
+            if tm.state in final_states:
+                return final_states[tm.state], tm.tape_contents
 
             if step_limit is not None and step > step_limit:
                 if raise_on_exceed:
@@ -148,8 +153,7 @@ class Algorithm:
 
     def test(self, initial_sequences, expected_state_func):
         for initial_sequence in initial_sequences:
-            actual, _ = self.run(initial_sequence, print_configurations=False, print_result=False)
-
+            actual, _ = self.run(initial_sequence, print_configurations=False)
             expected = expected_state_func(initial_sequence)
             passed = (expected == actual)
 
