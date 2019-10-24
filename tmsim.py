@@ -79,6 +79,8 @@ class Algorithm:
             if not set1.isdisjoint(set2):
                 raise ValueError(f'Sets of {label1} and {label2} are not disjoint')
 
+        self.states_max_length = max(len(str(state)) for state in states)
+
         def parse_value(old_state, old_symbol, value):
             if not isinstance(value, tuple):
                 value = (value,)
@@ -113,8 +115,7 @@ class Algorithm:
     def format_configuration(self, configuration):
         alpha, state, (symbol, *beta) = configuration
         return ''.join((
-            colored(f'<{state}>', attrs=['dark']),
-            '\t',
+            colored(f'<{state}>'.ljust(self.states_max_length+5), attrs=['dark']),
             self.format_sequence(alpha, replace_empty_word=False),
             colored(self.format_sequence((symbol,)), attrs=['underline']),
             self.format_sequence(beta, replace_empty_word=False)
