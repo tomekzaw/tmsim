@@ -50,7 +50,7 @@ Formally, Turing machine is a tuple of input alphabet, tape alphabet, set of sta
 * initial state (*q*<sub>s</sub>) is denoted by `q_s`, 
 * accepting state (*q*<sub>y</sub>) is denoted by `q_y` or `True`,
 * rejecting state (*q*<sub>n</sub>) is denoted by `q_n` or `False`,
-* blank symbol (&EmptySmallSquare;) is denoted by `[]`.
+* blank symbol (&square;) is denoted by `[]`.
 
 The tape alphabet and the set of states are inferred from the transition function. It is also assumed that the input alphabet contains all symbols from working alphabet and does not contain blank symbol. Therefore, in most cases it is only required to define the transition function.
 

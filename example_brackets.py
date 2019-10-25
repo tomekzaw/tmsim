@@ -2,7 +2,6 @@
 # Tomek Zawadzki
 
 from tmsim import *
-import itertools
 
 def are_brackets_balanced(word):
     if len(word) % 2 != 0:

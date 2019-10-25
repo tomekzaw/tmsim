@@ -2,7 +2,6 @@
 # Tomek Zawadzki
 
 from tmsim import *
-import itertools
 
 Algorithm({
     'q_s': {

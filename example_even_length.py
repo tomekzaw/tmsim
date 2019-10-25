@@ -1,5 +1,4 @@
 from tmsim import *
-import itertools
 
 Algorithm({
     'q_even': {
