@@ -13,6 +13,6 @@ Algorithm({
         '[]': False,
     }
 }, initial_state='q_even').test(
-    (word for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
+    generate_words('01', 10),
     lambda word: len(word) % 2 == 0
 )

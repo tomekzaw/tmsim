@@ -2,12 +2,12 @@
 [![asciicast](https://asciinema.org/a/Eyi6GLepf56PSUZCJVBDoCjIM.svg)](https://asciinema.org/a/Eyi6GLepf56PSUZCJVBDoCjIM)
 
 ## Solutions
-* [{ 0<sup>2<sup>*n*</sup></sup> | *n* &ge; 0 }](example_02n.py)
-* [{ 0<sup>*n*</sup>1<sup>*n*</sup> | *n* &ge; 0 }](example_0n1n.py)
-* [{ *xx* | *x* &isin; {0, 1}* }](example_xx.py)
-* [{ bin(*n*)#0<sup>*n*</sup> | *n* &ge; 0 }](example_bin(n)0n.py)
-* [{ bin(*i*)#bin(*i*+2) | *i* &ge; 0 }](example_bin(i)bin(i2).py)
-* [{ *x* &isin; { (, ) }* | *x* is balanced }](example_brackets.py)
+* [x] [{ 0<sup>2<sup>*n*</sup></sup> | *n* &ge; 0 }](example_02n.py)
+* [x] [{ 0<sup>*n*</sup>1<sup>*n*</sup> | *n* &ge; 0 }](example_0n1n.py)
+* [x] [{ *xx* | *x* &isin; {0, 1}* }](example_xx.py)
+* [x] [{ bin(*n*)#0<sup>*n*</sup> | *n* &ge; 0 }](example_bin(n)0n.py)
+* [x] [{ bin(*i*)#bin(*i*+2) | *i* &ge; 0 }](example_bin(i)bin(i2).py)
+* [x] [{ *x* &isin; { (, ) }* | *x* is balanced }](example_brackets.py)
 
 ## Quick Start Guide
 The following example demonstrates how to program Turing machines and verify the solution for multiple test cases.
@@ -40,7 +40,7 @@ Algorithm({
         '[]': True,
     }
 }).test(
-    (''.join(word) for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
+    generate_words('01', 10),
     lambda word: word == '0' * (len(word) // 2) + '1' * (len(word) // 2)
 )
 ```
@@ -172,7 +172,8 @@ You may run the test suite by calling `test` method on `Algorithm` object. This 
 Algorithm({
     # write your algorithm here
 }).test(
-    (''.join(word) for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
-    lambda word: word == '0' * (len(word) // 2) + '1' * (len(word) // 2)
+    generate_words('01', 10),
+    lambda word: len(word) % 2 == 0
 )
 ```
+You may use `generate_words` function to generate all words from supplied set of symbols of given maximum length. Note that you may also also use `itertools.chain` in order to merge multiple test suites into a single one.

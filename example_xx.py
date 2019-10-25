@@ -85,6 +85,6 @@ Algorithm({
         '[]': True,
     }
 }).test(
-    (word for length in range(0, 10+1) for word in itertools.product('01', repeat=length)),
+    generate_words('01', 10),
     lambda word: len(word) % 2 == 0 and word[:len(word)//2] == word[len(word)//2:]
 )

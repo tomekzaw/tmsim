@@ -51,6 +51,6 @@ Algorithm({
         '[]': ('q_s', '->'),
     },
 }).test(
-    (word for length in range(0, 12+1) for word in itertools.product('()', repeat=length)),
+    generate_words('()', 12),
     are_brackets_balanced
 )

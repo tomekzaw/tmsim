@@ -1,6 +1,6 @@
 import collections
 import itertools
-from termcolor import colored    
+from termcolor import colored
 
 class TuringMachine:
     def __init__(
@@ -165,3 +165,11 @@ class Algorithm:
 
         print(colored('All tests passed', 'green'))
         return True
+
+def generate_words(symbols, maxlength, minlength=0):
+    return (
+        ''.join(seq)
+        for length in range(minlength, maxlength+1)
+        for seq in itertools.product(symbols, repeat=length)
+    )
+        

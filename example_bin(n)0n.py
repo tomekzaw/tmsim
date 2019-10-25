@@ -8,9 +8,7 @@ def is_correct(word):
     if word.count('#') != 1:
         return False
     left, right = word.split('#')
-    if left.startswith('0') and left != '0':
-        return False
-    if not all(map(lambda c: c == '0', right)):
+    if not left or (left[0] == '0' and left != '0') or any(map(lambda c: c != '0', right)):
         return False
     try:
         return int(left, 2) == len(right)
@@ -75,7 +73,7 @@ Algorithm({
     },
 }).test(
     itertools.chain(
-        (''.join(seq) for length in range(9) for seq in itertools.product('01#', repeat=length)),
+        generate_words('01#', 9),
         (bin(n)[2:] + '#' + ('0' * n) for n in range(20)),
     ),
     is_correct
