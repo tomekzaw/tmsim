@@ -175,4 +175,4 @@ Algorithm({
     lambda word: len(word) % 2 == 0
 )
 ```
-You may use `generate_words` function to generate all words from supplied set of symbols of given maximum length. Note that you may also also use `itertools.chain` in order to merge multiple test suites into a single one.
+You may use `generate_words` function to generate all words from supplied set of symbols of given maximum length. Note that you may also use `itertools.chain` in order to merge multiple test suites into a single one.
