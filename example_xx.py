@@ -6,18 +6,18 @@ from tmsim import *
 Algorithm({
     'q_s': {
         # replace leftmost 0 or 1 with A or B, respectively
-        '0': ('A', 'q_r', '->'), 
+        '0': ('A', 'q_r', '->'),
         '1': ('B', 'q_r', '->'),
         # if all 0s and 1s have already been replaced and leftmost C or D is found, then start marking Cs and Ds as *
-        'C': 'q_*', 
+        'C': 'q_*',
         'D': 'q_*',
         # accept empty word as it meets the condition
-        '[]': True, 
+        '[]': True,
     },
     'q_r': {
         # find rightmost 0 or 1 by finding end of the word
         '0': '->',
-        '1': '->',        
+        '1': '->',
         # if C, D or end of the word is found, then go backwards
         'C': ('q_l', '<-'),
         'D': ('q_l', '<-'),
@@ -28,10 +28,10 @@ Algorithm({
         '0': ('C', 'q_b', '<-'),
         '1': ('D', 'q_b', '<-'),
         # reject if there is no corresponding 0 or 1 left (if all 0s and 1s have already been replaced)
-        'A': False, 
+        'A': False,
         'B': False,
         # ignore symbols that have already been replaced (Cs and Ds)
-        'C': '<-', 
+        'C': '<-',
         'D': '<-',
     },
     'q_b': { # symbol has been replaced, go back to leftmost 0 or 1

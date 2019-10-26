@@ -133,7 +133,7 @@ Algorithm({
         '1': ('#', 'q_b*', '<-'),
         '[]': False,
     },
-    'q_co#': { # check if there are only '#' left 
+    'q_co#': { # check if there are only '#' left
         '#': '->',
         '0': False,
         '1': False,

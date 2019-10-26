@@ -52,14 +52,14 @@ class TuringMachine:
         self.symbol, self.state = new_symbol, new_state
         # yield self.configuration # after symbol change but before head movement
         self.head_position = head_movement_func(self.head_position)
-        
+
 class Algorithm:
     def __init__(
         self,
         funcdict,
         *,
         blank_symbol='[]',
-        initial_state='q_s',     
+        initial_state='q_s',
         states=(True, False),
         symbols=(),
         arrows={
@@ -67,7 +67,7 @@ class Algorithm:
             '->': lambda x: x+1,
         },
         empty_word_representation='ε',
-        symbols_representations={'[]': '□'},   
+        symbols_representations={'[]': '□'},
     ):
         self.blank_symbol, self.initial_state = blank_symbol, initial_state
         self.empty_word_representation, self.symbols_representations = empty_word_representation, symbols_representations
@@ -100,7 +100,7 @@ class Algorithm:
             state = new_state if new_state is not None else old_state
             head_movement_func = arrows[new_arrow] if new_arrow else lambda x: x
             return symbol, state, head_movement_func
-                
+
         self.transition_function = {
             (state, symbol): parse_value(state, symbol, value)
             for state, symbols_to_values in funcdict.items()
@@ -172,4 +172,3 @@ def generate_words(symbols, maxlength, minlength=0):
         for length in range(minlength, maxlength+1)
         for seq in itertools.product(symbols, repeat=length)
     )
-        

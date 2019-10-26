@@ -46,7 +46,7 @@ Algorithm({
 
 ## Algorithms
 Formally, Turing machine is a tuple of input alphabet, tape alphabet, set of states, transition function, initial state, accepting state, rejecting state and blank symbol. By default,
-* initial state (*q*<sub>s</sub>) is denoted by `q_s`, 
+* initial state (*q*<sub>s</sub>) is denoted by `q_s`,
 * accepting state (*q*<sub>y</sub>) is denoted by `q_y` or `True`,
 * rejecting state (*q*<sub>n</sub>) is denoted by `q_n` or `False`,
 * blank symbol (&square;) is denoted by `[]`.
@@ -76,7 +76,7 @@ Note that there is no obligation for a transition function value to be a triple 
 ### States
 By convention, Turing machine states are strings that start with `q_`, for example `q_find`, `q_check` or `q_back`, but it is also acceptable to use abbreviations such as `q_f`, `q_c` or `q_b`, respectively, and supply additional information as comments if necessary.
 
-### Symbols 
+### Symbols
 You may use any string as symbol, but it is advisable to use single characters as they enable passing initial sequences as strings, not tuples or lists (eg. `011` instead of `('zero', 'one', 'one')`). Good choices are `0`, `1`, `a`, `B`, `*`, `#`, `@` etc. Remember that blank symbol is denoted by `[]`.
 
 ### Arrows
@@ -119,7 +119,7 @@ arrows={
 By default,
 ```python
 blank_symbol='[]',
-initial_state='q_s',      
+initial_state='q_s',
 states=(True, False),
 symbols=(),
 arrows={
@@ -127,7 +127,7 @@ arrows={
     '->': lambda x: x+1,
 },
 empty_word_representation='ε',
-symbols_representations={'[]': '□'},  
+symbols_representations={'[]': '□'},
 ```
 Note that the sets of symbols, states and arrows must be pairwise disjoint.
 
