@@ -8,6 +8,7 @@
 * [x] [{ *x*#*x* | *x* &isin; {0, 1}* }](example_x_hash_x.py)
 * [x] [{ bin(*n*)#0<sup>*n*</sup> | *n* &ge; 0 }](example_bin(n)0n.py)
 * [x] [{ bin(*i*)#bin(*i*+2) | *i* &ge; 0 }](example_bin(i)bin(i2).py)
+* [x] [{ bin(*i*-1)#bin(*i*+1) | i &isin; &naturals;, i > 0}](example_bin(i)bin(i2).py)
 * [x] [{ *x* &isin; { (, ) }* | *x* is balanced }](example_brackets.py)
 * [x] [{ x#y | x is a subsequence of y }](example_xy.py)
 
