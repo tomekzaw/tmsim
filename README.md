@@ -8,6 +8,7 @@
 * [x] [{ bin(*n*)#0<sup>*n*</sup> | *n* &ge; 0 }](example_bin(n)0n.py)
 * [x] [{ bin(*i*)#bin(*i*+2) | *i* &ge; 0 }](example_bin(i)bin(i2).py)
 * [x] [{ *x* &isin; { (, ) }* | *x* is balanced }](example_brackets.py)
+* [x] [{ x#y | x is a subsequence of y }](example_xy.py)
 
 ## Quick Start Guide
 The following example demonstrates how to program Turing machines and verify the solution for multiple test cases.
