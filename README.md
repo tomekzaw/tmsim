@@ -5,6 +5,7 @@
 * [x] [{ 0<sup>2<sup>*n*</sup></sup> | *n* &ge; 0 }](example_02n.py)
 * [x] [{ 0<sup>*n*</sup>1<sup>*n*</sup> | *n* &ge; 0 }](example_0n1n.py)
 * [x] [{ *xx* | *x* &isin; {0, 1}* }](example_xx.py)
+* [x] [{ *x*#*x* | *x* &isin; {0, 1}* }](example_x_hash_x.py)
 * [x] [{ bin(*n*)#0<sup>*n*</sup> | *n* &ge; 0 }](example_bin(n)0n.py)
 * [x] [{ bin(*i*)#bin(*i*+2) | *i* &ge; 0 }](example_bin(i)bin(i2).py)
 * [x] [{ *x* &isin; { (, ) }* | *x* is balanced }](example_brackets.py)
