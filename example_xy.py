@@ -4,10 +4,10 @@
 from tmsim import *
 
 def is_correct(word):
-    if word.count('#') != 1:
+    if '#' not in word:
         return False
-    x, y = word.split('#')
-    if len(x) > len(y):
+    x, y = word.split('#', 1)
+    if '#' in y or len(x) > len(y):
         return False
     y = iter(y)
     try:

@@ -5,9 +5,9 @@ from tmsim import *
 import itertools
 
 def is_correct(word):
-    if word.count('#') != 1:
+    if '#' not in word:
         return False
-    left, right = word.split('#')
+    left, right = word.split('#', 1)
     if not left or (left[0] == '0' and left != '0') or any(map(lambda c: c != '0', right)):
         return False
     try:

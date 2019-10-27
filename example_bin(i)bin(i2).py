@@ -5,10 +5,10 @@ from tmsim import *
 import itertools
 
 def is_correct(word):
-    if word.count('#') != 1:
+    if '#' not in word:
         return False
-    left, right = word.split('#')
-    if not left or not right or (left[0] == '0' and left != '0') or right[0] == '0':
+    left, right = word.split('#', 1)
+    if not left or not right or (left[0] == '0' and left != '0') or right[0] == '0' or '#' in right:
         return False
     try:
         return int(left, 2)+1 == int(right, 2)-1
