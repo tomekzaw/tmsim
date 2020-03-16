@@ -148,7 +148,7 @@ class Algorithm:
 
             if step_limit is not None and step > step_limit:
                 if raise_on_exceed:
-                    raise RuntimeError('Step limit of {step_limit} exceeded')
+                    raise RuntimeError(f'Step limit of {step_limit} exceeded')
                 else:
                     return None
 
